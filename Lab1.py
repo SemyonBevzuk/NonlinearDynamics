@@ -116,9 +116,7 @@ def task1_newton():
     # plt.show()
     file_name = 'Зависимость решения от альфы при разных n метод ньютона'
     file_name_png = file_name + '.png'
-    file_name_eps = file_name + '.eps'
-    plt.savefig(os.path.join('img', 'png', file_name_png), dpi=300)
-    plt.savefig(os.path.join('img', 'eps', file_name_eps), dpi=300)
+    plt.savefig(os.path.join('img', 'Lab1', file_name_png), dpi=300)
 
 
 # Для разных n строим x^*(\alfa) методом бисекции
@@ -147,9 +145,7 @@ def task1_bisection():
     # plt.show()
     file_name = 'Зависимость решения от альфы при разных n метод бисекции'
     file_name_png = file_name + '.png'
-    file_name_eps = file_name + '.eps'
-    plt.savefig(os.path.join('img', 'png', file_name_png), dpi=300)
-    plt.savefig(os.path.join('img', 'eps', file_name_eps), dpi=300)
+    plt.savefig(os.path.join('img', 'Lab1', file_name_png), dpi=300)
 
 
 # Для конкретных n и альфа сравнить методы. Построить два графика:
@@ -181,9 +177,7 @@ def task2():
     # plt.show()
     file_name = 'Зависимость решения от шага метода'
     file_name_png = file_name + '.png'
-    file_name_eps = file_name + '.eps'
-    plt.savefig(os.path.join('img', 'png', file_name_png), dpi=300)
-    plt.savefig(os.path.join('img', 'eps', file_name_eps), dpi=300)
+    plt.savefig(os.path.join('img', 'Lab1', file_name_png), dpi=300)
 
     plt.clf()
     plt.xscale('log')
@@ -200,9 +194,7 @@ def task2():
     # plt.show()
     file_name = 'Зависимость окрестности решения от шага метода'
     file_name_png = file_name + '.png'
-    file_name_eps = file_name + '.eps'
-    plt.savefig(os.path.join('img', 'png', file_name_png), dpi=300)
-    plt.savefig(os.path.join('img', 'eps', file_name_eps), dpi=300)
+    plt.savefig(os.path.join('img', 'Lab1', file_name_png), dpi=300)
 
 
 # Построить Р5=Р3*Р2
@@ -239,9 +231,7 @@ def task3():
     #plt.show()
     file_name = 'Зависимость корней от альфы'
     file_name_png = file_name + '.png'
-    file_name_eps = file_name + '.eps'
-    plt.savefig(os.path.join('img', 'png', file_name_png), dpi=300)
-    plt.savefig(os.path.join('img', 'eps', file_name_eps), dpi=300)
+    plt.savefig(os.path.join('img', 'Lab1', file_name_png), dpi=300)
 
 
 def main():
