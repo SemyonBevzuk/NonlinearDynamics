@@ -82,7 +82,10 @@ def task1():
     #plt.show()
     file_name = 'Зависимость тау от альфы при разных n'
     file_name_png = file_name + '.png'
-    plt.savefig(os.path.join('img', 'Lab2', file_name_png), dpi=300)
+    path_to_folder = os.path.join('img', 'Lab2')
+    if not os.path.exists(path_to_folder):
+        os.makedirs(path_to_folder)
+    plt.savefig(os.path.join(path_to_folder, file_name_png), dpi=300)
 
 
 def main():

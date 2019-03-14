@@ -116,7 +116,10 @@ def task1_newton():
     # plt.show()
     file_name = 'Зависимость решения от альфы при разных n метод ньютона'
     file_name_png = file_name + '.png'
-    plt.savefig(os.path.join('img', 'Lab1', file_name_png), dpi=300)
+    path_to_folder = os.path.join('img', 'Lab1')
+    if not os.path.exists(path_to_folder):
+        os.makedirs(path_to_folder)
+    plt.savefig(os.path.join(path_to_folder, file_name_png), dpi=300)
 
 
 # Для разных n строим x^*(\alfa) методом бисекции
@@ -145,7 +148,10 @@ def task1_bisection():
     # plt.show()
     file_name = 'Зависимость решения от альфы при разных n метод бисекции'
     file_name_png = file_name + '.png'
-    plt.savefig(os.path.join('img', 'Lab1', file_name_png), dpi=300)
+    path_to_folder = os.path.join('img', 'Lab1')
+    if not os.path.exists(path_to_folder):
+        os.makedirs(path_to_folder)
+    plt.savefig(os.path.join(path_to_folder, file_name_png), dpi=300)
 
 
 # Для конкретных n и альфа сравнить методы. Построить два графика:
@@ -177,7 +183,10 @@ def task2():
     # plt.show()
     file_name = 'Зависимость решения от шага метода'
     file_name_png = file_name + '.png'
-    plt.savefig(os.path.join('img', 'Lab1', file_name_png), dpi=300)
+    path_to_folder = os.path.join('img', 'Lab1')
+    if not os.path.exists(path_to_folder):
+        os.makedirs(path_to_folder)
+    plt.savefig(os.path.join(path_to_folder, file_name_png), dpi=300)
 
     plt.clf()
     plt.xscale('log')
@@ -194,7 +203,10 @@ def task2():
     # plt.show()
     file_name = 'Зависимость окрестности решения от шага метода'
     file_name_png = file_name + '.png'
-    plt.savefig(os.path.join('img', 'Lab1', file_name_png), dpi=300)
+    path_to_folder = os.path.join('img', 'Lab1')
+    if not os.path.exists(path_to_folder):
+        os.makedirs(path_to_folder)
+    plt.savefig(os.path.join(path_to_folder, file_name_png), dpi=300)
 
 
 # Построить Р5=Р3*Р2
@@ -231,7 +243,10 @@ def task3():
     #plt.show()
     file_name = 'Зависимость корней от альфы'
     file_name_png = file_name + '.png'
-    plt.savefig(os.path.join('img', 'Lab1', file_name_png), dpi=300)
+    path_to_folder = os.path.join('img', 'Lab1')
+    if not os.path.exists(path_to_folder):
+        os.makedirs(path_to_folder)
+    plt.savefig(os.path.join(path_to_folder, file_name_png), dpi=300)
 
 
 def main():
