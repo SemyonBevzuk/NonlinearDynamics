@@ -40,7 +40,7 @@ def runge_kutta_method(f, x0, h, t_max):
     return points
 
 
-# x' = x
+# x' = -x
 def stable_system(x, t):
     return [-elem for elem in x]
 
@@ -49,7 +49,7 @@ def stable_system_solution(x0, t):
     return [elem*math.exp(-t) for elem in x0]
 
 
-# x' = -x
+# x' = x
 def unstable_system(x, t):
     return [elem for elem in x]
 
@@ -136,9 +136,6 @@ def task1_stable(x0, h, t_max):
 
 def task1_unstable(x0, h, t_max):
     plt.clf()
-    t_max = 5.0
-    h = 0.1
-    x0 = [10.0]
     file_name_solution = 'Решение неустойчивой системы'
     file_name_errors = 'График ошибки методов на неустойчивой системе'
     solve_test_system_and_save_plots(unstable_system, unstable_system_solution, x0, h, t_max, \
@@ -266,7 +263,7 @@ def task3_show_XYZ():
 # ~~~~~~~~~~~~~~~~~~~~~~ Part №2 ~~~~~~~~~~~~~~~~~~~~~~
 # x' = -x
 def test_system(x, t):
-    return [elem for elem in x]
+    return [-elem for elem in x]
 
 
 def test_system_solution(x0, t):
