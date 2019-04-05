@@ -91,11 +91,11 @@ def main():
 
     n = int(1e5)  # число траекторий с разным r
     time_max = int(1e4)  # длительность процесса
-    r_left = 3.80
+    #r_left = 3.80
     r_right = 4.0
-    #for r_left in [3.0, 3.45, 3.54, 3.57, 3.80]:
-    #    print('\nr_left = {}'.format(r_left))
-    plot_bifurcation_diagram_with_lyapunov_indicator(r_left, r_right, n, time_max)
+    for r_left in [3.0, 3.45, 3.54, 3.57, 3.80]:
+        print('\nr_left = {}'.format(r_left))
+        plot_bifurcation_diagram_with_lyapunov_indicator(r_left, r_right, n, time_max)
 
 
 if __name__ == "__main__":
