@@ -60,7 +60,7 @@ def plot_bifurcation_diagram_with_lyapunov_indicator(r_left, r_right, n, time_ma
     x = 1e-5 * np.ones(n)
     r = np.linspace(r_left, r_right, n)
     L = np.ones(n, dtype=np.float128)  # ляпуновкие показатели
-    last_steps = 100  # определяет момент, когда процесс сошёлся к предельным точкам
+    last_steps = 100  # определяет момент, когда процесс сошёлся к предельным неподвижным точкам
     fig_bifurcation_diagram, axis_bif_diagram_1 = plt.subplots(1, 1)
     fig_bifurcation_diagram_with_lyapunov_indicator, (axis_bif_diagram_2, axis_lyapunov_indicator) \
         = plt.subplots(2, 1, figsize=(9, 7))
@@ -91,7 +91,7 @@ def main():
 
     n = int(1e5)  # число траекторий с разным r
     time_max = int(1e4)  # длительность процесса
-    #r_left = 3.80
+    r_left = 3.0
     r_right = 4.0
     for r_left in [3.0, 3.45, 3.54, 3.57, 3.80]:
         print('\nr_left = {}'.format(r_left))
