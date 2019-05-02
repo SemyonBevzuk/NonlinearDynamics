@@ -62,13 +62,12 @@ def plot_histogram_of_eigenvalues(data, xlabel, ylabel, file_name):
     plt.clf()
     plt.xlabel(xlabel)
     plt.ylabel(ylabel)
-    n, bins, patches = plt.hist(data, 100, density=True, label='Эмпирическое распределение',\
+    plt.hist(data, 100, density=True, label='Эмпирическое распределение',\
                                 edgecolor='black', linewidth=0.5)
 
-    c = np.max(n) / 2.
     x = np.linspace(-2., 2., 100)
-    y = [c * np.sqrt(4. - x ** 2) for x in x]
-    plt.plot(x, y, '', label='Теоретическое распределение')
+    y = [(1./(2. * np.pi)) * np.sqrt(4. - x ** 2) for x in x]
+    plt.plot(x, y, '', label='Распределение Вингера')
     plt.legend(loc='lower right')
     #plt.grid(True)
     plt.savefig(file_name_png, dpi=300)
@@ -88,10 +87,9 @@ def plot_histogram_of_distance(data, xlabel, ylabel, file_name):
     n, bins, patches = plt.hist(data, 100, density=True, label='Эмпирическое распределение',\
                                 edgecolor='black', linewidth=0.5)
 
-    WignerDyson = lambda x: x ** 2 * np.exp(-4. / np.pi * x ** 2)
-    c = np.max(n) / WignerDyson(np.sqrt(np.pi) / 2.)
+    WignerDyson = lambda x: (32. / (np.pi ** 2)) * (x ** 2) * np.exp(-4. / np.pi * x ** 2)
     x = np.linspace(np.min(bins), np.max(bins), 100)
-    y = [c * WignerDyson(x) for x in x]
+    y = [WignerDyson(x) for x in x]
     plt.plot(x, y, '', label='Распределение Вигнера-Дайсона')
     plt.legend(loc='upper right')
     #plt.grid(True)
@@ -117,7 +115,7 @@ def main():
     all_eigenvalues, all_distance = load_statistics(size*num_of_matrix)
 
     plot_histogram_of_eigenvalues(all_eigenvalues, r'$\lambda$', r'$W(\lambda)$', 'histogram_of_eigenvalues')
-    plot_histogram_of_distance(all_distance, r'$\bar{s}$', r'$W(\bar{s})$', 'histogram_of_distance')
+    plot_histogram_of_distance(all_distance, r'$\bar{s}$', r'$P(\bar{s})$', 'histogram_of_distance')
 
 
 if __name__ == "__main__":
