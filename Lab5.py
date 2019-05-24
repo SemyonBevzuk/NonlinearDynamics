@@ -87,8 +87,6 @@ def plot_bifurcation_diagram_with_lyapunov_indicator(r_left, r_right, n, time_ma
 
 
 def main():
-    #plot_x_n(0.01, 4.2, 8)
-
     n = int(1e5)  # число траекторий с разным r
     time_max = int(1e4)  # длительность процесса
     r_left = 3.0
