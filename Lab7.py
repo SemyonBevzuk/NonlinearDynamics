@@ -5,36 +5,33 @@ import numpy as np
 
 
 def generate_random_hermitian_matrix(N, M):
-    D = np.matrix(np.random.normal(0., 1., (N, M)) + 1j * np.random.normal(0., 1., (N, M)));
+    D = np.matrix(np.random.normal(0., 1., (N, M)) + 1j * np.random.normal(0., 1., (N, M)))
     A = (D + D.H) / 2.
     return A
 
 
-def runge_kutta_method(f, a, b, f_0, step):
+def runge_kutta_method(f, f_0, a, b, step):
+    x = f_0
+    t = a
     numSteps = int((b - a) / step)
-
-    x_values = [0.0]*(numSteps + 1)
-    t_values = [0.0]*(numSteps + 1)
-    x_values[0] = f_0
-    t_values[0] = a
-
     for i in range(0, numSteps):
-        k1 = f(x_values[i], t_values[i])
-        k2 = f(x_values[i] + 0.5*step*k1, t_values[i] + 0.5*step)
-        k3 = f(x_values[i] + 0.5*step*k2, t_values[i] + 0.5*step)
-        k4 = f(x_values[i] + step*k3, t_values[i] + step)
-        x_values[i + 1] = x_values[i] + step * (k1 + 2.*k2 + 2.*k3 + k4) / 6.0
-        t_values[i + 1] = t_values[i] + step
+        k1 = f(x, t)
+        k2 = f(x + 0.5*step * k1, t + 0.5 * step)
+        k3 = f(x + 0.5 * step * k2, t + 0.5 * step)
+        k4 = f(x + step*k3, t + step)
+        x = x + step * (k1 + 2. * k2 + 2. * k3 + k4) / 6.
+        t = t + step
 
-    return t_values, x_values
+    return x
 
 
-def get_propagator(f, T, size, step):
+def get_propagator(f, T, size):
+    step = 0.01
     P = [[]]*size
     for i in range(size):
         psi_0 = np.zeros((size, 1))
-        psi_0[i] = 1.0
-        P[i] = runge_kutta_method(f, 0., T, psi_0, step)[1][-1]
+        psi_0[i] = 1.
+        P[i] = runge_kutta_method(f, psi_0, 0., T, step)
 
     return np.matrix(np.array(P).reshape(size, size)).T
 
@@ -43,8 +40,7 @@ def get_eigenvalues(size, A):
     H_0 = generate_random_hermitian_matrix(size, size)
     f = lambda x, t: H_0 * (1.0 + A * np.cos(t)) * x * 1j
     T = 2 * np.pi
-    step = 0.01
-    Propagator_T = get_propagator(f, T, size, step)
+    Propagator_T = get_propagator(f, T, size)
     eigenvalues, eigenvectors = np.linalg.eig(Propagator_T)
     return eigenvalues
 
@@ -99,6 +95,7 @@ def plot_error_eigenvalues(eigenvalues, A):
 
 def main():
     size = 10
+    A = 0
     for A in [0.0, 0.1, 1.0]:
         eigenvalues = get_eigenvalues(size, A)
         plot_eigenvalues(eigenvalues, A)
